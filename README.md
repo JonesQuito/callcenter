@@ -14,3 +14,11 @@ Para instalar as dependencias acesse a pasta do projeto e execute o comando a se
 ### Para rodar o projeto (levantar o servidor)
 Para levantar o servidor execute o camando a seguir na raíz do projeto:
 - `nodemon app.js`
+
+
+### Rotas
+Após levantar o servidor, as seguintes rotas estarao disponiveis:
+- localhost:3000/index
+- localhost:3000/confirmar-dados
+- localhost:3000/opcoes-atendimento
+- localhost:3000/medicos
