@@ -48,15 +48,15 @@
                 {{#each medicos}}
                 <tr>
                     <td>{{nome}}</td>
-                    <td><a href="#" class="link-azul">2</a></td>
-                    <td><a href="#" class="link-azul">5</a></td>
-                    <td><a href="#" class="link-vermelho">0</a></td>
-                    <td><a href="#" class="link-azul">2</a></td>
-                    <td><a href="#" class="link-azul">5</a></td>
-                    <td><a href="#" class="link-azul">8</a></td>
-                    <td><a href="#" class="link-vermelho">1</a></td>
-                    <td><a href="#" class="link-azul">2</a></td>
-                    <td><a href="#" class="link-azul">8</a></td>
+                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">2</a></td>
+                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">5</a></td>
+                    <td><a href="#" class="link-vermelho"  data-toggle="modal" data-target="#vagas-detalhes">0</a></td>
+                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">2</a></td>
+                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">5</a></td>
+                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">8</a></td>
+                    <td><a href="#" class="link-vermelho"  data-toggle="modal" data-target="#vagas-detalhes">1</a></td>
+                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">2</a></td>
+                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">8</a></td>
                 </tr>
                 {{else}}
                 <h3>Não há especialidades cadastradas</h3>
@@ -65,3 +65,5 @@
         </table>
     </div>
 </div>
+
+{{>_modal-vagas-detalhes}}
