@@ -1,0 +1,88 @@
+<style>
+    .inp-wrapp {
+        margin-top: 0px;
+    }
+
+    .inp {
+        margin-top: -10px;
+    }
+
+    .bordas {
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(100,35,110, 0.2);
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-3 text-center">
+        <p class="lead mt-2">Você está logado no sistema Call Center</p>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="col-lg-12">
+            <div class="jumbotron text-center" style="padding: 20px;">
+                <h4 style="padding: 0px">Dados do cliente</h4>
+            </div>
+        </div>
+
+        <div class="col-lg-12" style="margin-top: -15px; border-radius: 5px">
+            <div>
+                <form>
+                    <div class="container" >
+                        <div class="row">
+                            <div class="form-group  col-lg-6">
+                                <label for="email">Código Pessoa Física:</label>
+                                <input type="text" class="form-control  inp" value="{{cd_pessoa_fisica}}" readonly>
+                            </div>
+                            <div class="form-group  col-lg-6">
+                                <label for="pwd">Nome:</label>
+                                <input type="text" class="form-control inp" value="{{nm_pessoa_fisica}}" readonly>
+                            </div>
+                            <div class="form-group  col-lg-6">
+                                <label for="pwd">Data Nascimento:</label>
+                                <input type="date" class="form-control inp" value="{{dt_nascimento}}" readonly>
+                            </div>
+                            <div class="form-group  col-lg-6">
+                                <label for="pwd">CPF:</label>
+                                <input type="text" class="form-control inp" value="{{nr_cpf}}" readonly>
+                            </div>
+                            <div class="form-group  col-lg-6">
+                                <label for="pwd">RG:</label>
+                                <input type="text" class="form-control inp" value="{{nr_identidade}}" readonly>
+                            </div>
+                            <div class="form-group  col-lg-6">
+                                <label for="pwd">Sexo:</label>
+                                <input type="text" class="form-control inp" value="{{sexo}}" readonly>
+                            </div>
+                            <div class="form-group  col-lg-6">
+                                <label for="pwd">Telefone Celular:</label>
+                                <input type="text" class="form-control inp" value="{{telefone}}">
+                            </div>
+
+                            <div class="form-group  col-lg-6">
+                                <label for="pwd">Email:</label>
+                                <input type="text" class="form-control inp" value="{{email}}">
+                            </div>
+
+
+                            <div class="col-lg-6 mt-6"></div>
+                            <div class="col-lg-6 mt-6">
+                                <input type="button" value="Salvar Alteração" class="btn btn-primary mt-2 inp button_success"
+                                style="border-radius: 15px;">
+                                <input type="button" value="Não há Alteração" class="btn btn-danger mt-2 inp  button_danger"
+                                style="border-radius: 15px;">
+                            </div>
+                            <!--
+                            <div class="col-lg-6 mt-6">
+                                <input type="button" value="Não há Alteração" class="btn btn-danger mt-2 inp">
+                            </div>-->
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
