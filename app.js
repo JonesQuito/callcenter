@@ -35,11 +35,13 @@ app.get('/opcoes-atendimento', (req, res) => {
 })
 
 app.get('/medicos', (req, res) => {
-    console.log(dados.medicos)
+    //console.log(dados.medicos)
+    console.log(dados.vagas2)
     res.render('agendamentos', {
-        especialidades: dados.especialidades,
-        medicos: dados.medicos,
-        vagas: dados.vagas
+        especialidades: dados.dados.especialidades,
+        medicos: dados.dados.medicos,
+        vagas: dados.dados.vagas,
+        vagas2: dados.vagas2
     })
 })
 

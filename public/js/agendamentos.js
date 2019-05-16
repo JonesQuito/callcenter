@@ -1,54 +1,46 @@
-var dados = 
-{
-    pessoa :{
-        cd_pessoa_fisica: 251487,
-        nm_pessoa_fisica: "Saru Tobi",
-        dt_nascimento: "1990-02-12",
-        sexo: 'Maculino',
-        nr_cpf: "236.125.124.20",
-        nr_identidade: "45821596",
-        telefone: "(62) 99585-2654",
-        email: 'sarutobi@naruto.com'
-    },
+function renderTable(idTable){
+    //alert('ok');
     
-    especialidades : [
-        {descricao: "Clinica Geral"},
-        {descricao: "Cardiologia"},
-        {descricao: "Ginecologia"},
-        {descricao: "Urologia"},
-        {descricao: "Pediatria"},
-        {descricao: "Psicologia"},
-        {descricao: "Psiquiatria"},
-        {descricao: "Mastologia"},
-        {descricao: "Cirurgião Geral"},
-        {descricao: "Neorologia"},
-    ],
-    medicos : [
-        {nome: "Jaqueline"},
-        {nome: "Nicole"},
-        {nome: "Felipe"},
-        {nome: "Larissa"},
-        {nome: "Juliana"},
-        {nome: "Ludimila"},
-        {nome: "Julio"},
-        {nome: "Francisco"},
-        {nome: "Roberto"},
-        {nome: "Gabriel"},
-    ],
-    vagas: [
-        {data: '12/05', vaga: 2},
-        {data: '13/05', vaga: 1},
-        {data: '16/05', vaga: 7},
-        {data: '17/05', vaga: 8},
-        {data: '19/05', vaga: 10},
-        {data: '23/05', vaga: 9},
-        {data: '24/05', vaga: 7},
-    ],
+    for(let i=0; i<vagas2.length; i++){
+      vagas2[i].DATA_00 = vagas2[i].DATA_00 == 'N'? 'N': vagas2[i].DATA_00.length == 0 ? 0: vagas2[i].DATA_00.length;
+      class00 = vagas2[i].DATA_00 == 'N'? '': vagas2[i].DATA_00 == 0 ? 'link-vermelho': 'link-azul';
+
+      vagas2[i].DATA_01 = vagas2[i].DATA_01 == 'N'? 'N': vagas2[i].DATA_01.length == 0 ? 0: vagas2[i].DATA_01.length
+      class01 = vagas2[i].DATA_01 == 'N'? '': vagas2[i].DATA_01 == 0 ? 'link-vermelho': 'link-azul';
+
+      vagas2[i].DATA_02 = vagas2[i].DATA_02 == 'N'? 'N': vagas2[i].DATA_02.length == 0 ? 0: vagas2[i].DATA_02.length
+      class02 = vagas2[i].DATA_02 == 'N'? '': vagas2[i].DATA_02 == 0 ? 'link-vermelho': 'link-azul';
+
+      vagas2[i].DATA_03 = vagas2[i].DATA_03 == 'N'? 'N': vagas2[i].DATA_03.length == 0 ? 0: vagas2[i].DATA_03.length
+      class03 = vagas2[i].DATA_03 == 'N'? '': vagas2[i].DATA_03 == 0 ? 'link-vermelho': 'link-azul';
+
+      vagas2[i].DATA_04 = vagas2[i].DATA_04 == 'N'? 'N': vagas2[i].DATA_04.length == 0 ? 0: vagas2[i].DATA_04.length
+      class04 = vagas2[i].DATA_04 == 'N'? '': vagas2[i].DATA_04 == 0 ? 'link-vermelho': 'link-azul';
+
+      vagas2[i].DATA_05 = vagas2[i].DATA_05 == 'N'? 'N': vagas2[i].DATA_05.length == 0 ? 0: vagas2[i].DATA_05.length
+      class05 = vagas2[i].DATA_05 == 'N'? '': vagas2[i].DATA_05 == 0 ? 'link-vermelho': 'link-azul';
+
+      vagas2[i].DATA_06 = vagas2[i].DATA_06 == 'N'? 'N': vagas2[i].DATA_06.length == 0 ? 0: vagas2[i].DATA_06.length
+      class06 = vagas2[i].DATA_06 == 'N'? '': vagas2[i].DATA_06 == 0 ? 'link-vermelho': 'link-azul';
+      //<td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">2</a></td>
+      $('#table > tbody:last-child').append('<tr>'+
+            '<td>'+vagas2[i].NM_MEDICO+'</td>'+
+            '<td <a href="#" class="'+class00+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_00 +'</a></td>'+
+            '<td <a href="#" class="'+class01+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_01 +'</a></td>'+
+            '<td <a href="#" class="'+class02+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_02 +'</a></td>'+
+            '<td <a href="#" class="'+class03+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_03 +'</a></td>'+
+            '<td <a href="#" class="'+class04+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_04 +'</a></td>'+
+            '<td <a href="#" class="'+class05+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_05 +'</a></td>'+
+            '<td <a href="#" class="'+class06+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_06 +'</a></td>'+
+            '</tr>');
+        //alert(vagas2[i].DS_ESTABELECIMENTO);
+    }
 }
 
 
+// Dados
 
-vagas2 = [
+let vagas2 = [
     {
       "CD_ESTABELECIMENTO": 20,
       "DS_ESTABELECIMENTO": "Clínica de Especialidades Jardim América",
@@ -784,7 +776,4 @@ vagas2 = [
   ]
 
 
-
-
-
-module.exports = {dados:dados, vagas2: vagas2};
+  

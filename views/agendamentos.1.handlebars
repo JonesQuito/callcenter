@@ -8,25 +8,11 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 <style>
-    .link-azul {
+    .link-azul{
         color: blue
     }
-
-    .link-vermelho {
+    .link-vermelho{
         color: brown
-    }
-
-
-
-
-    .my-custom-scrollbar {
-        position: relative;
-        height: 500px;
-        overflow: auto;
-    }
-
-    .table-wrapper-scroll-y {
-        display: block;
     }
 </style>
 
@@ -36,7 +22,7 @@
     <div class="col-lg-2 text-center">
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">
-                <h4>Especialidades </h4>
+                <h4>Especialidades</h4>
             </div>
             <div class="list-group list-group-flush">
                 {{#each especialidades}}
@@ -48,23 +34,18 @@
         </div>
     </div>
 
-
-
-    <div class="col-lg-10 text-center mt-1   table-wrapper-scroll-y my-custom-scrollbar">
-
-        <table class="table table-bordered table-hover" id="table" style="height: 255px;">
+    <div class="col-lg-10 text-center mt-1">
+        <table class="table table-bordered table-hover" id="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Médico</th>
                     {{#each vagas}}
                     <th scope="col">{{data}}</th>
-                    {{/each}}  
+                    {{/each}}
                 </tr>
             </thead>
-            <div class="table-wrapper-scroll-y my-custom-scrollba">
             <tbody>
                 {{#each medicos}}
-                <!--
                 <tr>
                     <td>{{nome}}</td>
                     <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">2</a></td>
@@ -74,19 +55,13 @@
                     <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">5</a></td>
                     <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">8</a></td>
                     <td><a href="#" class="link-vermelho"  data-toggle="modal" data-target="#vagas-detalhes">1</a></td>
-                </tr>-->
-                
+                </tr>
                 {{else}}
                 <h3>Não há especialidades cadastradas</h3>
                 {{/each}}
             </tbody>
-            </div>
         </table>
-</div>
+    </div>
 </div>
 
 {{>_modal-vagas-detalhes}}
-
-<script>
-
-</script>
