@@ -1,9 +1,14 @@
+var datas = [];
+
 function renderTable(idTable){
+  /*
+  
     //alert('ok');
     
     for(let i=0; i<vagas2.length; i++){
       vagas2[i].DATA_00 = vagas2[i].DATA_00 == 'N'? 'N': vagas2[i].DATA_00.length == 0 ? 0: vagas2[i].DATA_00.length;
       class00 = vagas2[i].DATA_00 == 'N'? '': vagas2[i].DATA_00 == 0 ? 'link-vermelho': 'link-azul';
+      datas.push({data: ''})
 
       vagas2[i].DATA_01 = vagas2[i].DATA_01 == 'N'? 'N': vagas2[i].DATA_01.length == 0 ? 0: vagas2[i].DATA_01.length
       class01 = vagas2[i].DATA_01 == 'N'? '': vagas2[i].DATA_01 == 0 ? 'link-vermelho': 'link-azul';
@@ -35,8 +40,168 @@ function renderTable(idTable){
             '</tr>');
         //alert(vagas2[i].DS_ESTABELECIMENTO);
     }
+    */
 }
 
+
+// Retorna a data atual no formato aaaa/dd/mm
+function getNow(){
+  var agora = new Date();
+  var dataAtual = agora.getFullYear() + '/' +agora.getDate()+ '/' + agora.getMonth();
+  return dataAtual;
+
+}
+
+/* Gerador de datas. Gera uma lista de datas a partir de uma data de início e uma data de fim */
+function gerarDatas(dataInicio, dataFim){
+  var diaInicial = new Date(dataInicio);
+  var diaFinal = new Date(dataFim);
+  var novaData = diaInicial;
+
+  if (novaData > diaFinal) {
+      novaData = diaFinal;
+      diaFinal = diaInicial;
+  }
+
+  var listaDatas = [];
+  while (novaData < diaFinal) {
+      novaData = new Date(novaData.getTime() + (24 * 60 * 60 * 1000));
+      dataFormatada =  novaData.getDate() + '-' + (novaData.getMonth() + 1) + '-' + novaData.getFullYear() ; 
+      listaDatas.push(dataFormatada);
+  }
+  return listaDatas;
+}
+
+let tabelasId = [];
+function rendermenu(){
+  // GERAR A COLUNA DE DATAS
+  var datas = gerarDatas('2019/01/17', '2019/01/24')
+  var cabecalho = '';
+  for(let i=0; i<datas.length; i++){
+    cabecalho = cabecalho + '<th scope="col">'+datas[i]+'</th>'
+  }
+
+  var id;
+  var li;
+  var table;
+  var tableId;
+  var myOnclick;
+  var linhaTabela;
+  /*
+  for(let i=0; i<medicos.length; i++){
+    colunaMedico = colunaMedico + '<tr> <td>'+medicos[i]+'</td> <td>34</td> <td>56</td>  <td>78</td>  </tr>';
+  }
+  */
+  
+ 
+  for(let i=0; i<estabelecimentos.length; i++){
+    linhaTabela = '';
+    tableId = estabelecimentos[i].substring(0, 5) + i;
+    tabelasId.push(tableId);
+    myOnclick = 'Mudarestado("'+tableId+'")';
+    id = 'hja'+ i.toString();
+    li = "<li class='nav-item'>"+
+              "<a class='nav-link active' href='#' onclick='"+myOnclick+"'> " +estabelecimentos[i].substring(0, 15) +"</a>" +
+          "</li>";
+    $('#ul-estab:last-child').append(li);
+
+    
+
+    for(let j=0; j<vagas2.length; j++){
+      if(estabelecimentos[i] == vagas2[j].DS_ESTABELECIMENTO.substring(0, 15)){
+        vagas2[j].DATA_00 = vagas2[j].DATA_00 == 'N'? 'N': vagas2[j].DATA_00.length == '0' ? '0': vagas2[j].DATA_00.length;
+        class00 = vagas2[j].DATA_00 == 'N'? '': vagas2[j].DATA_00 == 0 ? 'link-vermelho': 'link-azul';
+        //dataTarget00 = vagas2[j].DATA_00 != 0 && vagas2[j].DATA_00 != 'N' ? 
+        datas.push({data: ''})
+  
+        vagas2[j].DATA_01 = vagas2[j].DATA_01 == 'N'? 'N': vagas2[j].DATA_01.length == '0' ? '0': vagas2[j].DATA_01.length
+        class01 = vagas2[j].DATA_01 == 'N'? '': vagas2[j].DATA_01 == '0' ? 'link-vermelho': 'link-azul';
+  
+        vagas2[j].DATA_02 = vagas2[j].DATA_02 == 'N'? 'N': vagas2[j].DATA_02.length == '0' ? '0': vagas2[j].DATA_02.length
+        class02 = vagas2[j].DATA_02 == 'N'? '': vagas2[j].DATA_02 == '0' ? 'link-vermelho': 'link-azul';
+  
+        vagas2[j].DATA_03 = vagas2[j].DATA_03 == 'N'? 'N': vagas2[j].DATA_03.length == '0' ? '0': vagas2[j].DATA_03.length
+        class03 = vagas2[j].DATA_03 == 'N'? '': vagas2[j].DATA_03 == '0' ? 'link-vermelho': 'link-azul';
+  
+        vagas2[j].DATA_04 = vagas2[j].DATA_04 == 'N'? 'N': vagas2[j].DATA_04.length == '0' ? '0': vagas2[j].DATA_04.length
+        class04 = vagas2[j].DATA_04 == 'N'? '': vagas2[j].DATA_04 == '0' ? 'link-vermelho': 'link-azul';
+  
+        vagas2[j].DATA_05 = vagas2[j].DATA_05 == 'N'? 'N': vagas2[j].DATA_05.length == '0' ? '0': vagas2[j].DATA_05.length
+        class05 = vagas2[j].DATA_05 == 'N'? '': vagas2[j].DATA_05 == '0' ? 'link-vermelho': 'link-azul';
+  
+        vagas2[j].DATA_06 = vagas2[j].DATA_06 == 'N'? 'N': vagas2[j].DATA_06.length == '0' ? '0': vagas2[j].DATA_06.length
+        class06 = vagas2[j].DATA_06 == 'N'? '': vagas2[j].DATA_06 == '0' ? 'link-vermelho': 'link-azul';
+        //var onclick_06 = 'alert('+vagas2[j].DATA_06[0].HR_AGENDA+')';
+        
+        linhaTabela = linhaTabela + '<tr id="'+j+'">' +
+              '<td>'+vagas2[j].NM_MEDICO+'</td>'+
+              '<td <a href="#" class="'+class00+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_00 +'</a></td>'+
+              '<td <a href="#" class="'+class01+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_01 +'</a></td>'+
+              '<td <a href="#" class="'+class02+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_02 +'</a></td>'+
+              '<td <a href="#" class="'+class03+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_03 +'</a></td>'+
+              '<td <a href="#" class="'+class04+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_04 +'</a></td>'+
+              '<td <a href="#" class="'+class05+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_05 +'</a></td>'+
+              '<td <a href="#" class="'+class06+'"  data-toggle="modal" data-target="#vagas-detalhes" onClick="visualizarVagas(4);">'+vagas2[j].DATA_06 +'</a></td>'+
+              '</tr>';
+      }
+    }
+
+    // Gera uma tabela a ser renderizada com os dados de vagas de um estabelecimento       
+    table = '<div id= "'+ tableId +'" class="collapse col-lg-12 text-center mt-1   table-wrapper-scroll-y my-custom-scrollbar">' +
+                '<table class="table table-bordered table-hover" id="'+tableId+'" style="height: 255px;">' +
+                    '<thead class="thead-dark">'+
+                        '<tr>'+
+                          '<th scope="col">Médico</th>'+
+                            cabecalho +
+                          '</tr>'+
+                    '</thead>' +
+                    '<tbody>' +
+                    linhaTabela +
+                    '</tbody>' +
+                '</table>' +
+            '</div>'
+
+    $('#container:last-child').append(table);
+  }
+}
+
+function visualizarVagas(index){
+  alert(vagas2[index].DATA_06)
+}
+
+function Foo (vetor) {
+  var dicionario = {};
+  for (var i = 0; i < vetor.length; i++) {
+      dicionario[vetor[i] + ""] = true;
+  }
+  var novoVetor = [];
+  for (var chave in dicionario) {
+      novoVetor.push(chave);
+  }
+  return novoVetor;
+}
+
+
+function removeDuplicatas(arr){
+  var novaArr = arr.filter(function(este, i) {
+      return arr.indexOf(este) == i;
+  })
+  return novaArr;
+}
+
+
+function obterEstabelecimentos(){
+  for(let i=0; i<vagas2.length; i++){
+    estabelecimentos.push(vagas2[i].DS_ESTABELECIMENTO.substring(0, 15));
+    medicos.push(vagas2[i].NM_MEDICO);
+  }
+
+  estabelecimentos = removeDuplicatas(estabelecimentos);
+  //alert(estabelecimentos);
+}
+
+let estabelecimentos = [];
+let medicos = [];
 
 // Dados
 

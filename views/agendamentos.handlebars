@@ -9,14 +9,14 @@
 
 <style>
     .link-azul {
-        color: blue
+        color: blue;
+        font-size: 14pt;
+        font-weight: bolder;
     }
 
     .link-vermelho {
         color: brown
     }
-
-
 
 
     .my-custom-scrollbar {
@@ -28,11 +28,22 @@
     .table-wrapper-scroll-y {
         display: block;
     }
+
+    .sem_borda {
+        border-collapse: collapse;
+        background-color: #B7DDE7;
+        border: 0px !important;
+        font-size: 14pt;
+        font-weight: bolder;
+        padding: 0px;
+        height: 30px;
+    }
 </style>
 
 
-<div class="row">
 
+<div class="row">
+    <!-- LISTA UM MENU DE ESPECIALIDADES -->
     <div class="col-lg-2 text-center">
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">
@@ -50,43 +61,31 @@
 
 
 
-    <div class="col-lg-10 text-center mt-1   table-wrapper-scroll-y my-custom-scrollbar">
 
-        <table class="table table-bordered table-hover" id="table" style="height: 255px;">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Médico</th>
-                    {{#each vagas}}
-                    <th scope="col">{{data}}</th>
-                    {{/each}}  
-                </tr>
-            </thead>
-            <div class="table-wrapper-scroll-y my-custom-scrollba">
-            <tbody>
-                {{#each medicos}}
-                <!--
-                <tr>
-                    <td>{{nome}}</td>
-                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">2</a></td>
-                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">5</a></td>
-                    <td><a href="#" class="link-vermelho"  data-toggle="modal" data-target="#vagas-detalhes">0</a></td>
-                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">2</a></td>
-                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">5</a></td>
-                    <td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">8</a></td>
-                    <td><a href="#" class="link-vermelho"  data-toggle="modal" data-target="#vagas-detalhes">1</a></td>
-                </tr>-->
-                
-                {{else}}
-                <h3>Não há especialidades cadastradas</h3>
-                {{/each}}
-            </tbody>
+    <div id="container" class="container">
+        <!-- LISTA O MENU DE ESTABELECIMENTOS -->
+        <div class="row">
+            <div class="container">
+                <ul id="ul-estab" class="nav nav-tabs"></ul>
             </div>
-        </table>
-</div>
+        </div>
+    </div>
 </div>
 
 {{>_modal-vagas-detalhes}}
 
 <script>
+    /*Esta função é responsável por mostrar apenas a tabela representada pelo menu clicado, as demais tabelas são ocultadas*/
+    function Mudarestado(el) {
+        document.getElementById(el).style.display = 'block';
+        let tabelaId;
+        for (let i = 0; i < tabelasId.length; i++) {
+            tabelaId = tabelasId[i];
+            if (tabelaId != el) {
+                document.getElementById(tabelaId).style.display = 'none';
+            }
+        }
+    }
+
 
 </script>
