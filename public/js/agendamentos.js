@@ -1,47 +1,6 @@
 var datas = [];
 
-function renderTable(idTable){
-  /*
-  
-    //alert('ok');
-    
-    for(let i=0; i<vagas2.length; i++){
-      vagas2[i].DATA_00 = vagas2[i].DATA_00 == 'N'? 'N': vagas2[i].DATA_00.length == 0 ? 0: vagas2[i].DATA_00.length;
-      class00 = vagas2[i].DATA_00 == 'N'? '': vagas2[i].DATA_00 == 0 ? 'link-vermelho': 'link-azul';
-      datas.push({data: ''})
-
-      vagas2[i].DATA_01 = vagas2[i].DATA_01 == 'N'? 'N': vagas2[i].DATA_01.length == 0 ? 0: vagas2[i].DATA_01.length
-      class01 = vagas2[i].DATA_01 == 'N'? '': vagas2[i].DATA_01 == 0 ? 'link-vermelho': 'link-azul';
-
-      vagas2[i].DATA_02 = vagas2[i].DATA_02 == 'N'? 'N': vagas2[i].DATA_02.length == 0 ? 0: vagas2[i].DATA_02.length
-      class02 = vagas2[i].DATA_02 == 'N'? '': vagas2[i].DATA_02 == 0 ? 'link-vermelho': 'link-azul';
-
-      vagas2[i].DATA_03 = vagas2[i].DATA_03 == 'N'? 'N': vagas2[i].DATA_03.length == 0 ? 0: vagas2[i].DATA_03.length
-      class03 = vagas2[i].DATA_03 == 'N'? '': vagas2[i].DATA_03 == 0 ? 'link-vermelho': 'link-azul';
-
-      vagas2[i].DATA_04 = vagas2[i].DATA_04 == 'N'? 'N': vagas2[i].DATA_04.length == 0 ? 0: vagas2[i].DATA_04.length
-      class04 = vagas2[i].DATA_04 == 'N'? '': vagas2[i].DATA_04 == 0 ? 'link-vermelho': 'link-azul';
-
-      vagas2[i].DATA_05 = vagas2[i].DATA_05 == 'N'? 'N': vagas2[i].DATA_05.length == 0 ? 0: vagas2[i].DATA_05.length
-      class05 = vagas2[i].DATA_05 == 'N'? '': vagas2[i].DATA_05 == 0 ? 'link-vermelho': 'link-azul';
-
-      vagas2[i].DATA_06 = vagas2[i].DATA_06 == 'N'? 'N': vagas2[i].DATA_06.length == 0 ? 0: vagas2[i].DATA_06.length
-      class06 = vagas2[i].DATA_06 == 'N'? '': vagas2[i].DATA_06 == 0 ? 'link-vermelho': 'link-azul';
-      //<td><a href="#" class="link-azul"  data-toggle="modal" data-target="#vagas-detalhes">2</a></td>
-      $('#table > tbody:last-child').append('<tr>'+
-            '<td>'+vagas2[i].NM_MEDICO+'</td>'+
-            '<td <a href="#" class="'+class00+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_00 +'</a></td>'+
-            '<td <a href="#" class="'+class01+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_01 +'</a></td>'+
-            '<td <a href="#" class="'+class02+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_02 +'</a></td>'+
-            '<td <a href="#" class="'+class03+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_03 +'</a></td>'+
-            '<td <a href="#" class="'+class04+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_04 +'</a></td>'+
-            '<td <a href="#" class="'+class05+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_05 +'</a></td>'+
-            '<td <a href="#" class="'+class06+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_06 +'</a></td>'+
-            '</tr>');
-        //alert(vagas2[i].DS_ESTABELECIMENTO);
-    }
-    */
-}
+function renderTable(idTable){}
 
 
 // Retorna a data atual no formato aaaa/dd/mm
@@ -73,6 +32,21 @@ function gerarDatas(dataInicio, dataFim){
 }
 
 let tabelasId = [];
+
+function destaqueMenu(id){ 
+  
+  for(let i=0; i<estabelecimentos.length; i++){
+    if(id  ==  estabelecimentos[i].substring(0, 10)+i){
+      document.getElementById(id).style.backgroundColor = 'rgba(211,211,211, 0.8)';
+      document.getElementById(id).style.borderRadius = '5px';
+      document.getElementById(id).style.boxShadow = "1px 3px rgba(30,144,255, 0.3)";
+    }else{
+      document.getElementById(estabelecimentos[i].substring(0, 10)+i).style.backgroundColor = '#ffffff';
+      document.getElementById(estabelecimentos[i].substring(0, 10)+i).style.borderRadius = '0px';
+      document.getElementById(estabelecimentos[i].substring(0, 10)+i).style.boxShadow = "0px 0px white";
+    }
+  }
+}
 function rendermenu(){
   // GERAR A COLUNA DE DATAS
   var datas = gerarDatas('2019/01/17', '2019/01/24')
@@ -87,21 +61,20 @@ function rendermenu(){
   var tableId;
   var myOnclick;
   var linhaTabela;
-  /*
-  for(let i=0; i<medicos.length; i++){
-    colunaMedico = colunaMedico + '<tr> <td>'+medicos[i]+'</td> <td>34</td> <td>56</td>  <td>78</td>  </tr>';
-  }
-  */
+  var function_detalhes_vaga_00, function_detalhes_vaga_01, function_detalhes_vaga_02, function_detalhes_vaga_03,
+      function_detalhes_vaga_04, function_detalhes_vaga_05, function_detalhes_vaga_06;
+  var DATA_00, DATA_01, DATA_02, DATA_03, DATA_04, DATA_05, DATA_06;
+
   
  
   for(let i=0; i<estabelecimentos.length; i++){
     linhaTabela = '';
     tableId = estabelecimentos[i].substring(0, 5) + i;
     tabelasId.push(tableId);
-    myOnclick = 'Mudarestado("'+tableId+'")';
+    myOnclick = 'Mudarestado("'+tableId+'"); destaqueMenu("'+estabelecimentos[i].substring(0, 10)+i+'")';
     id = 'hja'+ i.toString();
-    li = "<li class='nav-item'>"+
-              "<a class='nav-link active' href='#' onclick='"+myOnclick+"'> " +estabelecimentos[i].substring(0, 15) +"</a>" +
+    li = "<li class='nav-item' >"+
+            "<a id='"+estabelecimentos[i].substring(0, 10)+i+"' class='nav-link active' href='#' onclick='"+myOnclick+"'> " +estabelecimentos[i].substring(0, 15) +"</a>" +
           "</li>";
     $('#ul-estab:last-child').append(li);
 
@@ -109,39 +82,48 @@ function rendermenu(){
 
     for(let j=0; j<vagas2.length; j++){
       if(estabelecimentos[i] == vagas2[j].DS_ESTABELECIMENTO.substring(0, 15)){
-        vagas2[j].DATA_00 = vagas2[j].DATA_00 == 'N'? 'N': vagas2[j].DATA_00.length == '0' ? '0': vagas2[j].DATA_00.length;
-        class00 = vagas2[j].DATA_00 == 'N'? '': vagas2[j].DATA_00 == 0 ? 'link-vermelho': 'link-azul';
+        DATA_00 = vagas2[j].DATA_00 == 'N'? 'N': vagas2[j].DATA_00.length == '0' ? '0': vagas2[j].DATA_00.length;
+        class00 = DATA_00 == 'N'? '': vagas2[j].DATA_00 == 0 ? 'link-vermelho': 'link-azul';
         //dataTarget00 = vagas2[j].DATA_00 != 0 && vagas2[j].DATA_00 != 'N' ? 
         datas.push({data: ''})
   
-        vagas2[j].DATA_01 = vagas2[j].DATA_01 == 'N'? 'N': vagas2[j].DATA_01.length == '0' ? '0': vagas2[j].DATA_01.length
-        class01 = vagas2[j].DATA_01 == 'N'? '': vagas2[j].DATA_01 == '0' ? 'link-vermelho': 'link-azul';
+        DATA_01 = vagas2[j].DATA_01 == 'N'? 'N': vagas2[j].DATA_01.length == '0' ? '0': vagas2[j].DATA_01.length
+        class01 = DATA_01 == 'N'? '': vagas2[j].DATA_01 == '0' ? 'link-vermelho': 'link-azul';
   
-        vagas2[j].DATA_02 = vagas2[j].DATA_02 == 'N'? 'N': vagas2[j].DATA_02.length == '0' ? '0': vagas2[j].DATA_02.length
-        class02 = vagas2[j].DATA_02 == 'N'? '': vagas2[j].DATA_02 == '0' ? 'link-vermelho': 'link-azul';
+        DATA_02 = vagas2[j].DATA_02 == 'N'? 'N': vagas2[j].DATA_02.length == '0' ? '0': vagas2[j].DATA_02.length
+        class02 = DATA_02 == 'N'? '': vagas2[j].DATA_02 == '0' ? 'link-vermelho': 'link-azul';
   
-        vagas2[j].DATA_03 = vagas2[j].DATA_03 == 'N'? 'N': vagas2[j].DATA_03.length == '0' ? '0': vagas2[j].DATA_03.length
-        class03 = vagas2[j].DATA_03 == 'N'? '': vagas2[j].DATA_03 == '0' ? 'link-vermelho': 'link-azul';
+        DATA_03 = vagas2[j].DATA_03 == 'N'? 'N': vagas2[j].DATA_03.length == '0' ? '0': vagas2[j].DATA_03.length
+        class03 = DATA_03 == 'N'? '': vagas2[j].DATA_03 == '0' ? 'link-vermelho': 'link-azul';
   
-        vagas2[j].DATA_04 = vagas2[j].DATA_04 == 'N'? 'N': vagas2[j].DATA_04.length == '0' ? '0': vagas2[j].DATA_04.length
-        class04 = vagas2[j].DATA_04 == 'N'? '': vagas2[j].DATA_04 == '0' ? 'link-vermelho': 'link-azul';
+        DATA_04 = vagas2[j].DATA_04 == 'N'? 'N': vagas2[j].DATA_04.length == '0' ? '0': vagas2[j].DATA_04.length
+        class04 = DATA_04 == 'N'? '': vagas2[j].DATA_04 == '0' ? 'link-vermelho': 'link-azul';
   
-        vagas2[j].DATA_05 = vagas2[j].DATA_05 == 'N'? 'N': vagas2[j].DATA_05.length == '0' ? '0': vagas2[j].DATA_05.length
-        class05 = vagas2[j].DATA_05 == 'N'? '': vagas2[j].DATA_05 == '0' ? 'link-vermelho': 'link-azul';
+        DATA_05 = vagas2[j].DATA_05 == 'N'? 'N': vagas2[j].DATA_05.length == '0' ? '0': vagas2[j].DATA_05.length
+        class05 = DATA_05 == 'N'? '': vagas2[j].DATA_05 == '0' ? 'link-vermelho': 'link-azul';
   
-        vagas2[j].DATA_06 = vagas2[j].DATA_06 == 'N'? 'N': vagas2[j].DATA_06.length == '0' ? '0': vagas2[j].DATA_06.length
-        class06 = vagas2[j].DATA_06 == 'N'? '': vagas2[j].DATA_06 == '0' ? 'link-vermelho': 'link-azul';
+        DATA_06 = vagas2[j].DATA_06 == 'N'? 'N': vagas2[j].DATA_06.length == '0' ? '0': vagas2[j].DATA_06.length
+        class06 = DATA_06 == 'N'? '': vagas2[j].DATA_06 == '0' ? 'link-vermelho': 'link-azul';
         //var onclick_06 = 'alert('+vagas2[j].DATA_06[0].HR_AGENDA+')';
+
+        function_detalhes_vaga_00 = "detalhesVagas(getHorariosAgenda("+j+"), 0);";
+        function_detalhes_vaga_01 = "detalhesVagas(getHorariosAgenda("+j+"), 1);";
+        function_detalhes_vaga_02 = "detalhesVagas(getHorariosAgenda("+j+"), 2);";
+        function_detalhes_vaga_03 = "detalhesVagas(getHorariosAgenda("+j+"), 3);";
+        function_detalhes_vaga_04 = "detalhesVagas(getHorariosAgenda("+j+"), 4);";
+        function_detalhes_vaga_05 = "detalhesVagas(getHorariosAgenda("+j+"), 5);";
+        function_detalhes_vaga_06 = "detalhesVagas(getHorariosAgenda("+j+"), 6);";
         
         linhaTabela = linhaTabela + '<tr id="'+j+'">' +
               '<td>'+vagas2[j].NM_MEDICO+'</td>'+
-              '<td <a href="#" class="'+class00+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_00 +'</a></td>'+
-              '<td <a href="#" class="'+class01+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_01 +'</a></td>'+
-              '<td <a href="#" class="'+class02+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_02 +'</a></td>'+
-              '<td <a href="#" class="'+class03+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_03 +'</a></td>'+
-              '<td <a href="#" class="'+class04+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[j].DATA_04 +'</a></td>'+
-              '<td <a href="#" class="'+class05+'"  data-toggle="modal" data-target="#vagas-detalhes">'+vagas2[i].DATA_05 +'</a></td>'+
-              '<td <a href="#" class="'+class06+'"  data-toggle="modal" data-target="#vagas-detalhes" onClick="visualizarVagas(4);">'+vagas2[j].DATA_06 +'</a></td>'+
+              '<td <a href="#" class="'+class00+'"  data-toggle="modal" onClick="'+ function_detalhes_vaga_00 +'">'+DATA_00 +'</a></td>'+
+              '<td <a href="#" class="'+class01+'"  data-toggle="modal" onClick="'+ function_detalhes_vaga_01 +'">'+DATA_01 +'</a></td>'+
+              '<td <a href="#" class="'+class02+'"  data-toggle="modal" onClick="'+ function_detalhes_vaga_02 +'">'+DATA_02 +'</a></td>'+
+              '<td <a href="#" class="'+class03+'"  data-toggle="modal" onClick="'+ function_detalhes_vaga_03 +'">'+DATA_03 +'</a></td>'+
+              //'<td <a href="#" class="'+class03+'"  data-toggle="modal" data-target="#vagas-detalhes">'+DATA_03 +'</a></td>'+
+              '<td <a href="#" class="'+class04+'"  data-toggle="modal" onClick="'+ function_detalhes_vaga_04 +'">'+DATA_04 +'</a></td>'+
+              '<td <a href="#" class="'+class05+'"  data-toggle="modal" onClick="'+ function_detalhes_vaga_05 +'">'+DATA_05 +'</a></td>'+
+              '<td <a href="#" class="'+class06+'"  data-toggle="modal" onClick="'+ function_detalhes_vaga_06 +'">'+DATA_06 +'</a></td>'+
               '</tr>';
       }
     }
@@ -165,9 +147,91 @@ function rendermenu(){
   }
 }
 
-function visualizarVagas(index){
-  alert(vagas2[index].DATA_06)
+function getHorariosAgenda(index){
+  let vagas = [];
+  let DATA_00_vagas = [];
+  let DATA_01_vagas = [];
+  let DATA_02_vagas = [];
+  let DATA_03_vagas = [];
+  let DATA_04_vagas = [];
+  let DATA_05_vagas = [];
+  let DATA_06_vagas = [];
+
+  if(vagas2[index].DATA_00.length > 0){
+    for(let i=0; i<vagas2[index].DATA_00.length; i++){
+      DATA_00_vagas.push(vagas2[index].DATA_00[i].HR_AGENDA);
+    }
+  }
+
+  if(vagas2[index].DATA_01.length > 0){
+    for(let i=0; i<vagas2[index].DATA_01.length; i++){
+      DATA_01_vagas.push(vagas2[index].DATA_01[i].HR_AGENDA);
+    }
+  }
+
+  if(vagas2[index].DATA_02.length > 0){
+    for(let i=0; i<vagas2[index].DATA_02.length; i++){
+      DATA_02_vagas.push(vagas2[index].DATA_02[i].HR_AGENDA);
+    }
+  }
+
+  if(vagas2[index].DATA_03.length > 0){
+    for(let i=0; i<vagas2[index].DATA_03.length; i++){
+      DATA_03_vagas.push(vagas2[index].DATA_03[i].HR_AGENDA);
+    }
+  }
+
+  if(vagas2[index].DATA_04.length > 0){
+    for(let i=0; i<vagas2[index].DATA_04.length; i++){
+      DATA_04_vagas.push(vagas2[index].DATA_04[i].HR_AGENDA);
+    }
+  }
+
+  if(vagas2[index].DATA_05.length > 0){
+    for(let i=0; i<vagas2[index].DATA_05.length; i++){
+      DATA_05_vagas.push(vagas2[index].DATA_05[i].HR_AGENDA);
+    }
+  }
+
+  if(vagas2[index].DATA_06.length > 0){
+    for(let i=0; i<vagas2[index].DATA_06.length; i++){
+      DATA_06_vagas.push(vagas2[index].DATA_06[i].HR_AGENDA);
+    }
+  }
+
+  vagas.push(DATA_00_vagas);
+  vagas.push(DATA_01_vagas);
+  vagas.push(DATA_02_vagas);
+  vagas.push(DATA_03_vagas);
+  vagas.push(DATA_04_vagas);
+  vagas.push(DATA_05_vagas);
+  vagas.push(DATA_06_vagas);
+
+  return vagas;
 }
+
+// Responsável por montar e exibir o modal com os horários das vagas disponíveis com um determinado médico e dia
+function detalhesVagas(arrayHorarios, index){  
+  let vaga = '';
+  if(arrayHorarios[index].length > 0){
+    for(let i=0; i<arrayHorarios[index].length; i++){
+      vaga = vaga + '<div class="custom-control custom-radio">' +
+                      '<input type="radio" class="custom-control-input" name="radio" id="radio'+i+'">'+
+                      '<label class="custom-control-label" for="radio'+i+'">'+arrayHorarios[index][i]+'</label>' +
+                    '</div>';
+    }
+  }else {
+    vaga =  '<div class="form-check">' +
+              '<p>Não há vagas disponíveis</p>' +
+            '</div>';
+  }
+
+  $('#vagas-detalhes-body').html('')
+  $('#vagas-detalhes-body').append(vaga)
+  $('#vagas-detalhes').modal('show');
+}
+
+
 
 function Foo (vetor) {
   var dicionario = {};
@@ -182,6 +246,7 @@ function Foo (vetor) {
 }
 
 
+
 function removeDuplicatas(arr){
   var novaArr = arr.filter(function(este, i) {
       return arr.indexOf(este) == i;
@@ -190,21 +255,21 @@ function removeDuplicatas(arr){
 }
 
 
+
 function obterEstabelecimentos(){
   for(let i=0; i<vagas2.length; i++){
     estabelecimentos.push(vagas2[i].DS_ESTABELECIMENTO.substring(0, 15));
     medicos.push(vagas2[i].NM_MEDICO);
   }
-
   estabelecimentos = removeDuplicatas(estabelecimentos);
-  //alert(estabelecimentos);
 }
 
 let estabelecimentos = [];
 let medicos = [];
 
-// Dados
 
+
+// Dados
 let vagas2 = [
     {
       "CD_ESTABELECIMENTO": 20,
