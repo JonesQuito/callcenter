@@ -41,25 +41,16 @@
 </style>
 
 
-
 <div class="row">
     <!-- LISTA UM MENU DE ESPECIALIDADES -->
     <div class="col-lg-2 text-center">
-        <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="bg-light border-right  my-custom-scrollbar  table-wrapper-scroll-y" id="sidebar-wrapper">
             <div class="sidebar-heading">
                 <h4>Especialidades </h4>
             </div>
-            <div class="list-group list-group-flush">
-                {{#each especialidades}}
-                <a href="#" class="list-group-item list-group-item-action bg-light">{{descricao}}</a>
-                {{else}}
-                <h3>Não há especialidades cadastradas</h3>
-                {{/each}}
-            </div>
+            
         </div>
     </div>
-
-
 
 
     <div id="container" class="container">
@@ -86,6 +77,5 @@
             }
         }
     }
-
 
 </script>

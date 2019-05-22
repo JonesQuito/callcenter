@@ -5,9 +5,21 @@ const dados = require('./database')
 
 const app = express()
 
+// Funções utilitárias
+function obterEspecialidades() {
+    return new Promise((resolve, reject) => {
+        $.get('http://fila.hmja.com.br:3003/especialidades_agenda/15/F', function (data) {
+            resolve(data);
+        }, 'json');
+    })
+}
+
+
+// Funções utilitárias
+
 
 // Configuração do handlebars
-app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 
@@ -36,19 +48,21 @@ app.get('/opcoes-atendimento', (req, res) => {
 
 app.get('/medicos', (req, res) => {
     //console.log(dados.medicos)
-    console.log(dados.vagas2)
+    //console.log(dados.vagas2)
+/*
+    obterEspecialidades().then((especialidades) => {
+        console.log(especialidades[0].DS_ESPECIALIDADE)
+    });
+*/
     res.render('agendamentos', {
         especialidades: dados.dados.especialidades,
-        medicos: dados.dados.medicos,
-        vagas: dados.dados.vagas,
-        vagas2: dados.vagas2
+
     })
 })
-
 
 
 // Subindo o servidor
 const PORT = 3000
 app.listen(PORT, () => {
-    console.log('Servidor rodando em: localhost:'+PORT)
+    console.log('Servidor rodando em: localhost:' + PORT)
 })
